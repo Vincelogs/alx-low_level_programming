@@ -22,6 +22,9 @@ int _putchar(char);
 size_t print_list(const list_t *h);
 size_t list_len(const list_t *h);
 list_t *add_node(list_t **head, const char *str);
+<<<<<<< HEAD
 list_t *add_node_end(list_t **head, const char *str);
+=======
+>>>>>>> 80288ee3f2fb6db96c528f5c3fb786a84814334f
 
 #endif /* _LISTS_H_ */
