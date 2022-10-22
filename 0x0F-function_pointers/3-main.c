@@ -28,6 +28,6 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 	c = f(a, b);
-	printf ("%d\n", c);
+	printf("%d\n", c);
 	return (0);
 }
