@@ -8,15 +8,29 @@
 
 void print_binary(unsigned long int n)
 {
-	unsigned int mask = 32768;   /* mask = [1000 0000 0000 0000] */
+	unsigned int i, start = 0;
+	unsigned long int num_bits, mask, result;
+	unsigned long int s;
 
-
-	while (mask > 0)
+	s = 1;
+	num_bits = sizeof(unsigned long int) * 8 - 1;
+	mask = s << num_bits;
+	for (i = 0; i < num_bits; i++)
 	{
-	        if ((n & mask) == 0 )
-	                _putchar('0');
-	        else
-	                _putchar('1');
-	        mask = mask >> 1;  /* Right Shift */
+		if (i == (num_bits - 1))
+			mask = 1;
+		if ((n & mask) > 0)
+			start = 1;
+		result = n & mask;
+		if (start)
+		{
+			if (result > 0)
+				_putchar('1');
+			else
+				_putchar('0');
+		}
+		if ((i == (num_bits - 1)) && (start == 0))
+			_putchar('0');
+		mask >>= 1;
 	}
 }
