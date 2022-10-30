@@ -1,36 +1,35 @@
 #include "main.h"
 
 /**
- * print_binary - Print binary representation of number
- * @n: The number
+ * print_binary - function to convert number to binary
+ * @n: unsigned long int type
  *
+ * Return: always successful
  */
-
 void print_binary(unsigned long int n)
 {
-	unsigned int i, start = 0;
-	unsigned long int num_bits, mask, result;
-	unsigned long int s;
+	unsigned long int check;
+	unsigned int size = sizeof(n) * 8;
+	unsigned int count;
+	unsigned int flag = 1;
 
-	s = 1;
-	num_bits = sizeof(unsigned long int) * 8 - 1;
-	mask = s << num_bits;
-	for (i = 0; i < num_bits; i++)
+	count = 0;
+	while (count < size)
 	{
-		if (i == (num_bits - 1))
-			mask = 1;
-		if ((n & mask) > 0)
-			start = 1;
-		result = n & mask;
-		if (start)
+		check = (n << 1);
+		check >>= 1;
+		if (n != check)
 		{
-			if (result > 0)
-				_putchar('1');
-			else
-				_putchar('0');
+			flag = 0;
+			write(1, "1", 1);
 		}
-		if ((i == (num_bits - 1)) && (start == 0))
-			_putchar('0');
-		mask >>= 1;
+		else if (!flag)
+		{
+			write(1, "0", 1);
+		}
+		n <<=  1;
+		count++;
 	}
+	if (flag == 1)
+		write(1, "0", 1);
 }
